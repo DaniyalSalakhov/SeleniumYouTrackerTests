@@ -2,25 +2,22 @@ package ru.home.tests;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import ru.home.driver.DriverManager;
 import ru.home.pages.DashBoardPage;
 import ru.home.pages.LoginPage;
+import ru.home.tests.base.BaseTest;
 
-import java.time.Duration;
 
-class LoginTest {
+class LoginTest extends BaseTest {
     private LoginPage loginPage;
     private DashBoardPage dashBoardPage;
-    private WebDriver driver;
 
     @BeforeEach
-    public void setup(){
-        driver = new SafariDriver();
+    public void setup() {
+        WebDriver driver = DriverManager.getDriver();
         driver.get("http://localhost:8080");
         loginPage = new LoginPage(driver);
         dashBoardPage = new DashBoardPage(driver);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test
@@ -34,10 +31,5 @@ class LoginTest {
     void unsuccessfulLoginTest(){
         loginPage.login("notAdmin", "badpassword");
         Assertions.assertTrue(loginPage.isOpened());
-    }
-
-    @AfterEach
-    public void shutDown(){
-        driver.quit();
     }
 }
