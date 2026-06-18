@@ -21,6 +21,12 @@
             <artifactId>ashot</artifactId>
             <version>1.5.4</version>
             <scope>compile</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-remote-driver</artifactId>
+            </exclusion>
+        </exclusions>
         </dependency>
         <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>

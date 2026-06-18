@@ -23,7 +23,7 @@ public class TasksPage {
     public boolean isTaskPresent(String taskName){
         By taskLocator = By.xpath(
                 "//a[@data-test='ring-link ticket-id' and contains(@href,'/"+taskName+"')]");
-        return driver.findElement(taskLocator).isDisplayed();
+        return !driver.findElements(taskLocator).isEmpty();
     }
 
     public void removeTaskByName(String taskName){
