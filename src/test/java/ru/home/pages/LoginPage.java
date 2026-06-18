@@ -12,6 +12,7 @@ import java.time.Duration;
 public class LoginPage{
 
     private WebDriver driver;
+    private WebDriverWait wait;
     @FindBy(id = "username")
     private WebElement usernameField;
     @FindBy(id = "password")
@@ -22,10 +23,10 @@ public class LoginPage{
     public LoginPage(WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void login(String username, String password){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(usernameField));
         usernameField.sendKeys(username);
         wait.until(ExpectedConditions.visibilityOf(passwordField));

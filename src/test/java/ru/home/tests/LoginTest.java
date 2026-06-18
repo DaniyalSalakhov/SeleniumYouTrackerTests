@@ -1,6 +1,8 @@
 package ru.home.tests;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
 import ru.home.driver.DriverManager;
 import ru.home.pages.DashBoardPage;
@@ -20,16 +22,19 @@ class LoginTest extends BaseTest {
         dashBoardPage = new DashBoardPage(driver);
     }
 
-    @Test
-    void successfulLoginTest(){
-        loginPage.login("admin", "qwerty007");
-        Assertions.assertTrue(dashBoardPage.isOpened());
-        loginPage.logout();
-    }
-
-    @Test
-    void unsuccessfulLoginTest(){
-        loginPage.login("notAdmin", "badpassword");
-        Assertions.assertTrue(loginPage.isOpened());
+    @ParameterizedTest
+    @CsvSource({
+            "admin, qwerty007, true",
+            "incorrectUsername, incorrectPassword, false"
+    })
+    void successfulLoginTest(String username, String password, String isValid){
+        if(Boolean.parseBoolean(isValid)) {
+            loginPage.login(username, password);
+            Assertions.assertTrue(dashBoardPage.isOpened());
+        }
+        else{
+            loginPage.login(username, password);
+            Assertions.assertTrue(loginPage.isOpened());
+        }
     }
 }
