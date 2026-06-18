@@ -31,4 +31,9 @@ public class NavBar {
         wait.until(ExpectedConditions.visibilityOf(createTaskButton));
         createTaskButton.click();
     }
+
+    public void openTasks(String taskName){
+        wait.until(ExpectedConditions.visibilityOf(tasksButton));
+        tasksButton.click();
+    }
 }
