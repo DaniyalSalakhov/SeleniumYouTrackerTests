@@ -18,7 +18,7 @@ public class LoginPage{
     @FindBy(id = "password")
     private WebElement passwordField;
     @FindBy(css = "[data-test='login-button']")
-    private WebElement submitUserButton;
+    private WebElement submitUserButtonLocator;
 
     public LoginPage(WebDriver driver){
         PageFactory.initElements(driver, this);
@@ -31,11 +31,12 @@ public class LoginPage{
         usernameField.sendKeys(username);
         wait.until(ExpectedConditions.visibilityOf(passwordField));
         passwordField.sendKeys(password);
-        submitUserButton.click();
+        submitUserButtonLocator.click();
     }
 
     public boolean isOpened(){
-        return submitUserButton.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(submitUserButtonLocator));
+        return submitUserButtonLocator.isDisplayed();
     }
 
     public void logout(){

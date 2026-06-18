@@ -16,7 +16,7 @@ class LoginTest extends BaseTest {
 
     @BeforeEach
     public void setup() {
-        WebDriver driver = DriverManager.getDriver();
+        driver = DriverManager.getDriver();
         driver.get("http://localhost:8080");
         loginPage = new LoginPage(driver);
         dashBoardPage = new DashBoardPage(driver);

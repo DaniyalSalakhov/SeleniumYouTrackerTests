@@ -9,9 +9,11 @@ import ru.home.driver.DriverManager;
 import java.time.Duration;
 
 public abstract class BaseTest {
+    protected WebDriver driver;
+
     @BeforeEach
     public void setUp(){
-        WebDriver driver = DriverFactory.createDriver();
+        driver = DriverFactory.createDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         DriverManager.setDrivers(driver);
