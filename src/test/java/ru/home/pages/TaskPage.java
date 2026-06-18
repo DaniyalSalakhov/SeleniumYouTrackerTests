@@ -7,14 +7,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.home.pages.base.AuthorizedBasePage;
 
 import javax.xml.xpath.XPath;
 import java.time.Duration;
 
-public class TaskPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private NavBar navBar;
+public class TaskPage extends AuthorizedBasePage {
+
     private By taskNameLocator = By.cssSelector("[data-test='ticket-summary']");
     private By tooltip = By.cssSelector("[aria-label='Показать больше']");
     private By deleteButton = By.xpath("//*[contains(@id,'delete')]");
@@ -22,10 +21,8 @@ public class TaskPage {
     private By confirmDeleteButton = By.cssSelector("[data-test='confirm-ok-button']");
 
     public TaskPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
-        navBar = new NavBar(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public String getTaskName(){

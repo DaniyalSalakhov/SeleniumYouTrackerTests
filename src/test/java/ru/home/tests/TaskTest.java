@@ -34,6 +34,8 @@ public class TaskTest extends AuthorizedBaseTest {
         if(isTaskPresent){
             ScreenshotUtils.takeScreenshots(driver,"removeTask");
         }
+        //Сама задача удаляется, но все еще видна после переадресации.
+        //Необходимо собственноручно перезагрузить страницу
         Assertions.assertFalse(isTaskPresent);
     }
 }

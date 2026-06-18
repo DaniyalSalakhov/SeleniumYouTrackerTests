@@ -6,12 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.home.pages.base.BasePage;
 
 import java.time.Duration;
 
-public class NavBar {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class NavBar extends BasePage {
+
     @FindBy(css = "[data-test='ring-link issues-button']")
     private WebElement tasksButton;
     @FindBy(css = "[data-test='ring-dropdown create']")
@@ -20,9 +20,8 @@ public class NavBar {
     private WebElement createTaskButton;
 
     public NavBar(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void createTask(){

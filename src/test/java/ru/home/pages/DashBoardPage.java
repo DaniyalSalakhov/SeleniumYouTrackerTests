@@ -7,22 +7,17 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.home.pages.base.AuthorizedBasePage;
 
 import java.time.Duration;
 
-public class DashBoardPage{
-
-    private WebDriver driver;
-    private NavBar navBar;
-    private WebDriverWait wait;
+public class DashBoardPage extends AuthorizedBasePage {
     @FindBy(css = "[data-test='avatar']")
     private WebElement loginAvatar;
 
     public DashBoardPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
-        navBar = new NavBar(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public boolean isOpened() {

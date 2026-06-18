@@ -5,19 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.home.pages.base.AuthorizedBasePage;
 
 import java.time.Duration;
 
-public class TasksPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private NavBar navBar;
+public class TasksPage extends AuthorizedBasePage {
 
     public TasksPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
-        navBar = new NavBar(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public boolean isTaskPresent(String taskName){
