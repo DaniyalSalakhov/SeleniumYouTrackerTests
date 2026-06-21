@@ -19,22 +19,19 @@ class LoginTest extends BaseTest {
         driver = DriverManager.getDriver();
         driver.get("http://localhost:8080");
         loginPage = new LoginPage(driver);
-        dashBoardPage = new DashBoardPage(driver);
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "admin, qwerty007, true",
-            "incorrectUsername, incorrectPassword, false"
-    })
-    void successfulLoginTest(String username, String password, String isValid){
-        if(Boolean.parseBoolean(isValid)) {
-            loginPage.login(username, password);
-            Assertions.assertTrue(dashBoardPage.isOpened());
-        }
-        else{
-            loginPage.login(username, password);
-            Assertions.assertTrue(loginPage.isOpened());
-        }
+    @CsvSource({"admin, qwerty007"})
+    public void successfulLoginTest(String username, String password){
+        dashBoardPage = loginPage.login(username, password);
+        Assertions.assertTrue(dashBoardPage.isOpened());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"incorrectLogin, incorrectPassword"})
+    public void unsuccessfulLoginTest(String username, String password){
+        loginPage.login(username, password);
+        Assertions.assertTrue(loginPage.isOpened());
     }
 }

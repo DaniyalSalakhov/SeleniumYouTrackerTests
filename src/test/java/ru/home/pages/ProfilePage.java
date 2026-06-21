@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import ru.home.pages.base.AuthorizedBasePage;
+import ru.home.pages.base.BasePage;
 
-public class ProfilePage extends AuthorizedBasePage {
-
+public class ProfilePage extends BasePage {
+    private NavBar navBar;
     @FindBy(css = "[data-test='ring-dropdown ring-profile']")
     private WebElement profileName;
     @FindBy(xpath = "//*[@data-test='userProfileFullName']//input")
@@ -18,6 +18,7 @@ public class ProfilePage extends AuthorizedBasePage {
 
     public ProfilePage(WebDriver driver){
         super(driver);
+        navBar = new NavBar(driver);
         PageFactory.initElements(driver, this);
     }
 

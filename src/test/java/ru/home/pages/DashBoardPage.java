@@ -6,17 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.home.pages.base.AuthorizedBasePage;
+import ru.home.pages.base.BasePage;
 
-import java.time.Duration;
-
-public class DashBoardPage extends AuthorizedBasePage {
+public class DashBoardPage extends BasePage {
+    private NavBar navBar;
     @FindBy(css = "[data-test='avatar']")
     private WebElement loginAvatar;
 
     public DashBoardPage(WebDriver driver){
         super(driver);
+        navBar = new NavBar(driver);
         PageFactory.initElements(driver, this);
     }
 

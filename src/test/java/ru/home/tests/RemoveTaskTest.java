@@ -1,25 +1,28 @@
 package ru.home.tests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.By;
-import ru.home.driver.DriverManager;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.home.pages.CreateTaskPage;
-import ru.home.pages.TaskPage;
+import ru.home.pages.DashBoardPage;
+import ru.home.pages.LoginPage;
 import ru.home.pages.TasksPage;
-import ru.home.tests.base.AuthorizedBaseTest;
+import ru.home.tests.base.BaseTest;
 import ru.home.utils.ScreenshotUtils;
 
-public class TaskTest extends AuthorizedBaseTest {
+import java.time.Duration;
 
-    @ParameterizedTest
-    @CsvSource({"taskToAdd"})
-    public void createTask(String taskName) {
-        CreateTaskPage createTaskPage = dashBoardPage.createTask();
-        TaskPage taskPage = createTaskPage.createTask(taskName);
-        Assertions.assertEquals(taskName, taskPage.getTaskName());
-        taskPage.deleteTask();
+public class RemoveTaskTest extends BaseTest {
+    private DashBoardPage dashBoardPage;
+
+    @BeforeEach
+    public void login() {
+        driver.get("http://localhost:8080");
+        LoginPage loginPage = new LoginPage(driver);
+        dashBoardPage = loginPage.login("admin", "qwerty007");
     }
 
     @ParameterizedTest

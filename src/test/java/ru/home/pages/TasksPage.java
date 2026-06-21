@@ -4,15 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.home.pages.base.AuthorizedBasePage;
+import ru.home.pages.base.BasePage;
 
-import java.time.Duration;
 
-public class TasksPage extends AuthorizedBasePage {
+public class TasksPage extends BasePage {
+
+    private NavBar navBar;
 
     public TasksPage(WebDriver driver){
         super(driver);
+        navBar = new NavBar(driver);
         PageFactory.initElements(driver, this);
     }
 

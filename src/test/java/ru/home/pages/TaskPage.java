@@ -2,18 +2,13 @@ package ru.home.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.home.pages.base.AuthorizedBasePage;
+import ru.home.pages.base.BasePage;
 
-import javax.xml.xpath.XPath;
-import java.time.Duration;
+public class TaskPage extends BasePage {
 
-public class TaskPage extends AuthorizedBasePage {
-
+    private NavBar navBar;
     private By taskNameLocator = By.cssSelector("[data-test='ticket-summary']");
     private By tooltip = By.cssSelector("[aria-label='Показать больше']");
     private By deleteButton = By.xpath("//*[contains(@id,'delete')]");
@@ -22,6 +17,7 @@ public class TaskPage extends AuthorizedBasePage {
 
     public TaskPage(WebDriver driver){
         super(driver);
+        navBar = new NavBar(driver);
         PageFactory.initElements(driver, this);
     }
 
