@@ -16,7 +16,6 @@ public class ProfileTest extends BaseTest {
 
     @BeforeEach
     public void login() {
-        driver.get("http://localhost:8080");
         LoginPage loginPage = new LoginPage(driver);
         dashBoardPage = loginPage.login("admin", "qwerty007");
     }
@@ -25,7 +24,7 @@ public class ProfileTest extends BaseTest {
     @ParameterizedTest
     @CsvSource({"newName"})
     public void changeProfileName(String profileNameToSet){
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfilePage profilePage = dashBoardPage.getProfilePage();
         profilePage.setProfileName(profileNameToSet);
         String newProfileName = profilePage.getProfileName();
         if(!profileNameToSet.equals(newProfileName)){
@@ -37,7 +36,7 @@ public class ProfileTest extends BaseTest {
 
     @AfterEach
     public void shutdown(){
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfilePage profilePage = dashBoardPage.getProfilePage();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

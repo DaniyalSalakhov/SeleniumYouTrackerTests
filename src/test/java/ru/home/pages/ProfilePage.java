@@ -10,7 +10,7 @@ import ru.home.pages.base.BasePage;
 
 public class ProfilePage extends BasePage {
     private NavBar navBar;
-    @FindBy(css = "[data-test='ring-dropdown ring-profile']")
+    @FindBy(xpath = "//div[contains(@data-test,'ring-dropdown ring-profile')]")
     private WebElement profileName;
     @FindBy(xpath = "//*[@data-test='userProfileFullName']//input")
     private WebElement profileNameForm;
@@ -23,13 +23,10 @@ public class ProfilePage extends BasePage {
     }
 
     public String getProfileName(){
-        driver.get("localhost:8080/dashboard");
-        System.out.println();
         return profileName.getText();
     }
 
     public void setProfileName(String newName){
-        driver.get("http://localhost:8080/users/me");
         wait.until(ExpectedConditions.elementToBeClickable(profileNameForm));
         profileNameForm.clear();
         profileNameForm.sendKeys(newName);

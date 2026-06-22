@@ -4,13 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.home.pages.*;
 import ru.home.tests.base.BaseTest;
-import ru.home.utils.ScreenshotUtils;
-
-import java.time.Duration;
 
 public class AddTaskTest extends BaseTest {
 
@@ -18,7 +13,6 @@ public class AddTaskTest extends BaseTest {
 
     @BeforeEach
     public void login() {
-        driver.get("http://localhost:8080");
         LoginPage loginPage = new LoginPage(driver);
         dashBoardPage = loginPage.login("admin", "qwerty007");
     }

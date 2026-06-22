@@ -24,8 +24,8 @@ public class TasksPage extends BasePage {
     }
 
     public void removeTaskByName(String taskName){
-        By taskLocator = By.xpath(
-                "//a[@data-test='ring-link ticket-id' and contains(@href,'/"+taskName+"')]");
+        By taskLocator = By.xpath("//a[@data-test='ring-link ticket-id' and contains(@href,'/"
+                +taskName+"')]");
         wait.until(ExpectedConditions.elementToBeClickable(taskLocator));
         driver.findElement(taskLocator).click();
         TaskPage taskPage = new TaskPage(driver);

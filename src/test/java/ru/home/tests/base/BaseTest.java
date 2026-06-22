@@ -17,6 +17,7 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         DriverManager.setDrivers(driver);
+        driver.get("http://localhost:8080");
     }
 
     @AfterEach

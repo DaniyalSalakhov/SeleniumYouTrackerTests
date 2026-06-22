@@ -9,11 +9,11 @@ import ru.home.pages.base.BasePage;
 public class TaskPage extends BasePage {
 
     private NavBar navBar;
-    private By taskNameLocator = By.cssSelector("[data-test='ticket-summary']");
-    private By tooltip = By.cssSelector("[aria-label='Показать больше']");
-    private By deleteButton = By.xpath("//*[contains(@id,'delete')]");
-    private By confirmationDialog = By.cssSelector("[role='dialog']");
-    private By confirmDeleteButton = By.cssSelector("[data-test='confirm-ok-button']");
+    private By taskNameLocator = By.xpath("//h1[contains(@data-test,'ticket-summary')]");
+    private By tooltip = By.xpath("//span[(@data-test-title='Показать больше')]//button");
+    private By deleteButton = By.xpath("//div[contains(@id,'delete')]");
+    private By confirmationDialog = By.xpath("//div[contains(@role,'dialog')]");
+    private By confirmDeleteButton = By.xpath("//button[contains(@data-test,'confirm-ok-button')]");
 
     public TaskPage(WebDriver driver){
         super(driver);
@@ -34,5 +34,9 @@ public class TaskPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationDialog));
         wait.until(ExpectedConditions.elementToBeClickable(confirmDeleteButton));
         driver.findElement(confirmDeleteButton).click();
+    }
+
+    public TasksPage goToTasks(){
+        return navBar.openTasks();
     }
 }

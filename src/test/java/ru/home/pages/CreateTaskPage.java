@@ -10,9 +10,9 @@ import ru.home.pages.base.BasePage;
 
 public class CreateTaskPage extends BasePage {
     private NavBar navBar;
-    @FindBy(css = "[data-test='summary']")
+    @FindBy(xpath = "//textarea[contains(@data-test,'summary')]")
     private WebElement taskName;
-    @FindBy(css = "[data-test='submit-button']")
+    @FindBy(xpath = "//button[contains(@data-test,'submit-button')]")
     private WebElement createButton;
 
     public CreateTaskPage(WebDriver driver){

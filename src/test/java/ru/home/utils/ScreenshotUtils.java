@@ -13,7 +13,7 @@ public class ScreenshotUtils {
     public static void takeScreenshots(WebDriver driver, String testName){
         try{
             Screenshot screenshot = new AShot()
-                    .shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
+                    .shootingStrategy(ShootingStrategies.scaling(2.0f)).takeScreenshot(driver);
             File directory = new File("src/test/resources/screenshots");
             directory.mkdirs();
             File file = new File("src/test/resources/screenshots/"+testName

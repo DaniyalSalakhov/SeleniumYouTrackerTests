@@ -9,11 +9,11 @@ import ru.home.pages.base.BasePage;
 
 
 public class LoginPage extends BasePage {
-    @FindBy(id = "username")
+    @FindBy(xpath = "//input[contains(@data-test,'username-field')]")
     private WebElement usernameField;
-    @FindBy(id = "password")
+    @FindBy(xpath = "//input[contains(@data-test,'password-field')]")
     private WebElement passwordField;
-    @FindBy(css = "[data-test='login-button']")
+    @FindBy(xpath = "//button[contains(@data-test,'login-button')]")
     private WebElement submitUserButtonLocator;
 
     public LoginPage(WebDriver driver){
