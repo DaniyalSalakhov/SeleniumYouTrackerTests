@@ -1,4 +1,4 @@
-package ru.home.pages.base;
+package ru.home.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import ru.home.pages.DashBoardPage;
 import ru.home.pages.LoginPage;
 import ru.home.pages.ProfilePage;
-import ru.home.tests.base.BaseTest;
 import ru.home.utils.ScreenshotUtils;
 
 public class ProfileTest extends BaseTest {
@@ -17,7 +16,7 @@ public class ProfileTest extends BaseTest {
     @BeforeEach
     public void login() {
         LoginPage loginPage = new LoginPage(driver);
-        dashBoardPage = loginPage.login("admin", "qwerty007");
+        dashBoardPage = loginPage.login(login, password);
     }
 
 

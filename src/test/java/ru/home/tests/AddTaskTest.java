@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import ru.home.pages.*;
-import ru.home.tests.base.BaseTest;
 
 public class AddTaskTest extends BaseTest {
 
@@ -14,7 +13,7 @@ public class AddTaskTest extends BaseTest {
     @BeforeEach
     public void login() {
         LoginPage loginPage = new LoginPage(driver);
-        dashBoardPage = loginPage.login("admin", "qwerty007");
+        dashBoardPage = loginPage.login(login, password);
     }
 
 
